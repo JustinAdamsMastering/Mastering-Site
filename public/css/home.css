@@ -1,0 +1,76 @@
+.logo {
+  font-style: italic;
+  font-weight: 400;
+}
+
+main {
+  padding-top: 15vh;
+
+  h1 {
+    font-size: 5rem;
+    font-weight: 500;
+    text-align: center;
+    animation-duration: 3s;
+    animation-name: fadeInLeft;
+    animation-timing-function: ease;
+
+    @starting-style {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+  }
+
+  place-items: center;
+}
+
+
+.song-select {
+  position: relative;
+  max-width: 50ch;
+  mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
+
+  scroll-timeline: --song-select-scroll;
+
+  ul {
+    mask: linear-gradient(to right,
+        transparent 0, black 10%,
+        black 90%, transparent 100%);
+
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    overflow: auto;
+    gap: 3rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+    font-size: 1.5rem;
+
+    li {
+      transition: scale 0.5s;
+      scroll-snap-align: center;
+      text-wrap: nowrap;
+
+      &.focused {
+        scale: 1.5;
+      }
+    }
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
