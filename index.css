@@ -18,4 +18,24 @@ html {
 
 body {
   color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+  transition: opacity 300ms;
+
+  &:link,
+  &:visited {
+    color: var(--color-text);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }

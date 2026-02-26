@@ -1,9 +1,20 @@
+body {
+  background-image: url("../img/home-min.webp");
+}
+
+.backdrop {
+  flex: 1;
+  backdrop-filter: grayscale(50%) blur(20px) brightness(20%);
+}
+
 .logo {
   font-style: italic;
   font-weight: 400;
 }
 
 main {
+  height: 100%;
+  flex: 1;
   display: grid;
   padding-top: 15vh;
 
@@ -38,7 +49,7 @@ main {
     list-style-type: none;
     overflow: hidden;
     gap: 3rem;
-    margin-top: 1rem;
+    margin-top: 3rem;
     padding: 1rem;
     padding-inline: 25ch;
     scroll-snap-type: x mandatory;
@@ -77,4 +88,37 @@ main {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.casette {
+  position: relative;
+  /* border: 1px solid sandybrown; */
+
+  .circle-left {
+    position: absolute;
+    top: 35.5%;
+    left: 22%;
+  }
+
+  .circle-right {
+    position: absolute;
+    top: 35.5%;
+    left: 64%;
+  }
+
+  /* background-image: url("../img/before_cassette-min.webp"); */
+}
+
+.spin {
+  animation: spin infinite 3s linear;
 }
