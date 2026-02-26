@@ -4,6 +4,7 @@
 }
 
 main {
+  display: grid;
   padding-top: 15vh;
 
   h1 {
@@ -26,25 +27,24 @@ main {
 
 .song-select {
   position: relative;
-  max-width: 50ch;
+  scroll-timeline: --song-select-scroll;
   mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
 
-  scroll-timeline: --song-select-scroll;
-
   ul {
-    mask: linear-gradient(to right,
-        transparent 0, black 10%,
-        black 90%, transparent 100%);
-
+    max-width: 50ch;
+    mask: linear-gradient(to right, transparent 0, black 30%, black 70%, transparent 100%);
     display: flex;
     align-items: center;
     list-style-type: none;
-    overflow: auto;
+    overflow: hidden;
     gap: 3rem;
     margin-top: 1rem;
     padding: 1rem;
+    padding-inline: 25ch;
     scroll-snap-type: x mandatory;
     font-size: 1.5rem;
+    transition: opacity 0.2s;
+    cursor: pointer;
 
     li {
       transition: scale 0.5s;
@@ -53,6 +53,10 @@ main {
 
       &.focused {
         scale: 1.5;
+      }
+
+      &:hover {
+        opacity: 0.8;
       }
     }
   }

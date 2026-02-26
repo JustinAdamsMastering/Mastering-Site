@@ -5,26 +5,37 @@ const songs = document.querySelectorAll("[data-song]");
 
 //////////////
 // lets
-let alertTimeout = null;
+let selectTimeout = null;
 
 //////////////
 // handlers
+
 const handleIntersection = (entries, observer) => {
   el = entries.filter(({ isIntersecting }) => isIntersecting).at(-1);
   notIntersecting = entries.filter(({ isIntersecting }) => !isIntersecting);
-  if (el) {
-    const songKey = el.target.dataset.song;
-    songs.forEach((el) =>
-      el.dataset.song === songKey
-        ? el.classList.add("focused")
-        : el.classList.remove("focused"),
-    );
-    if (alertTimeout) clearTimeout(alertTimeout);
-    alertTimeout = setTimeout(() => {
+  selectTimeout = setTimeout(() => {
+    if (el) {
+      const songKey = el.target.dataset.song;
+      songs.forEach((el) =>
+        el.dataset.song === songKey
+          ? el.classList.add("focused")
+          : el.classList.remove("focused"),
+      );
+      if (alertTimeout) clearTimeout(alertTimeout);
       console.log(songKey);
-    }, 300);
-  }
+    }
+  }, 300);
 };
+
+///////////////////
+// scroll setup
+
+songs.forEach((el) =>
+  el.addEventListener("click", () => {
+    el.scrollIntoView({ behavior: "smooth" });
+  }),
+);
+observerElement.scrollLeft = observerElement.scrollWidth * 0.5;
 
 ///////////////////
 // observer setup
