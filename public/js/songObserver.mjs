@@ -1,7 +1,7 @@
 //////////////
 // consts
 const observerElement = document.querySelector(".song-select");
-const songs = document.querySelectorAll("[data-song]");
+const songElements = document.querySelectorAll("[data-song]");
 
 //////////////
 // lets
@@ -11,17 +11,16 @@ let selectTimeout = null;
 // handlers
 
 const handleIntersection = (entries, observer) => {
-  el = entries.filter(({ isIntersecting }) => isIntersecting).at(-1);
-  notIntersecting = entries.filter(({ isIntersecting }) => !isIntersecting);
+  const el = entries.filter(({ isIntersecting }) => isIntersecting).at(-1);
   selectTimeout = setTimeout(() => {
     if (el) {
       const songKey = el.target.dataset.song;
-      songs.forEach((el) =>
+      songElements.forEach((el) =>
         el.dataset.song === songKey
           ? el.classList.add("focused")
           : el.classList.remove("focused"),
       );
-      if (alertTimeout) clearTimeout(alertTimeout);
+      if (selectTimeout) clearTimeout(selectTimeout);
       console.log(songKey);
     }
   }, 300);
@@ -30,7 +29,7 @@ const handleIntersection = (entries, observer) => {
 ///////////////////
 // scroll setup
 
-songs.forEach((el) =>
+songElements.forEach((el) =>
   el.addEventListener("click", () => {
     el.scrollIntoView({ behavior: "smooth" });
   }),
@@ -44,4 +43,4 @@ const observer = new IntersectionObserver(handleIntersection, {
   rootMargin: "0% -50%",
   threshold: 0,
 });
-songs.forEach((el) => observer.observe(el));
+songElements.forEach((el) => observer.observe(el));

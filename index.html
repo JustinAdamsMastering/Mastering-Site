@@ -39,21 +39,24 @@
           <li data-song="jazz">Jazz</li>
         </ul>
       </div>
-      <em>(Rocky Song - The rockin bros)</em>
+      <!-- <em>(Rocky Song - The rockin bros)</em> -->
       <div class="casette">
-        <img src="./public/img/after_cassette.webp" width="390px" height="auto" />
-        <img class="circle-left" src="./public/img/cassette_circle_left.webp" width="52px" />
-        <img class="circle-right" src="./public/img/cassette_circle_left.webp" width="52px" />
+        <img src="./public/img/before_cassette-min.webp" width="400px" height="auto" />
+        <img class="circle-left spin" src="./public/img/cassette_circle.webp" width="52px" />
+        <img class="circle-right spin" src="./public/img/cassette_circle.webp" width="52px" />
+        <span class="title">The Long Band Name<br>The Long Song Name Too</span>
       </div>
-      <div class="casette">
-        <img src="./public/img/before_cassette.webp" width="400px" height="auto" />
-        <img class="circle-left spin" src="./public/img/cassette_circle_left.webp" width="52px" />
-        <img class="circle-right spin" src="./public/img/cassette_circle_left.webp" width="52px" />
-        <span>The Long Band Name<br>The Long Song Name Too</span>
-      </div>
+      <!-- <div class="casette">
+        <img src="./public/img/after_cassette-min.webp" width="390px" height="auto" />
+        <img class="circle-left spin" src="./public/img/cassette_circle.webp" width="52px" />
+        <img class="circle-right spin" src="./public/img/cassette_circle.webp" width="52px" />
+        <span class="title">The Long Band Name<br>The Long Song Name Too</span>
+      </div> -->
     </main>
   </div>
-  <script src="./public/js/songObserver.js"></script>
+  <script type="module" src="./public/js/songObserver.mjs"></script>
+  <script type="text/javascript" src="./public/js/howler.js"></script>
+  <script type="module" src="./public/js/songPlayer.mjs"></script>
 </body>
 
 </html>
