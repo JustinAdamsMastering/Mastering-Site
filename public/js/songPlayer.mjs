@@ -33,7 +33,7 @@ class AudioPlayer {
   }
   toggleBeforeAfter() {
     this.enableMastering = !this.enableMastering;
-    this.playSong(this.playingKey, this.enableMastering);
+    this.play(this.enableMastering);
   }
   pause() {
     this.beforePlayer?.pause();

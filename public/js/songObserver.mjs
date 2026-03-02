@@ -31,7 +31,7 @@ const handleIntersection = (entries, observer) => {
 
 songElements.forEach((el) =>
   el.addEventListener("click", () => {
-    el.scrollIntoView({ behavior: "smooth" });
+    el.scrollIntoView({ behavior: "smooth", container: "nearest" }); // TODO Fix scrolling on chromium
   }),
 );
 observerElement.scrollLeft = observerElement.scrollWidth * 0.5;
