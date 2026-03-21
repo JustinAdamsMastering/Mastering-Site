@@ -1,12 +1,19 @@
+import { observeSongSelect } from "./eventsBus.mjs";
 import songs from "./songs.json" with { type: "json" };
 
 class AudioPlayer {
   constructor() {
-    this.playingKey = null;
+    this.songKey = null;
     this.enableMastering = false;
     this.beforePlayer = null;
     this.afterPlayer = null;
+    this.seek = 0;
     this.fadeTime = 200;
+    this.EventKeys = {
+      Playing: "audioPlayer:isPlaying",
+      SongKey: "audioPlayer:songKey",
+      Mastering: "audioPlayer:isMastered",
+    };
   }
   unloadSongs(shouldFade) {
     for (const player of ["beforePlayer", "afterPlayer"]) {
@@ -22,37 +29,68 @@ class AudioPlayer {
         p.unload();
         this[player] = null;
       }
+      this.seek = 0;
     }
   }
   loadSong(dataKey) {
     this.unloadSongs();
-    this.playingKey = dataKey;
+    this.songKey = dataKey;
     const song = songs[dataKey];
     this.beforePlayer = new Howl({ src: [song.before] });
     this.afterPlayer = new Howl({ src: [song.after] });
   }
-  toggleBeforeAfter() {
-    this.enableMastering = !this.enableMastering;
-    this.play(this.enableMastering);
+  setMastering(enableMastering) {
+    if (this.enableMastering === enableMastering) return;
+    if (this.isPlaying) {
+      this.activePlayer.pause();
+      this.inactivePlayer.play();
+      this.inactivePlayer.seek(this.activePlayer.seek());
+    }
+    this.enableMastering = enableMastering;
+    this.emit(this.EventKeys.Mastering, enableMastering);
   }
   pause() {
-    this.beforePlayer?.pause();
-    this.afterPlayer?.pause();
+    this.seek = this.activePlayer.seek();
+    this.activePlayer.pause();
+    this.emit(this.EventKeys.Playing, false);
   }
-  play(useMastered = false) {
-    if (!this.playingKey) return;
-    const player = useMastered ? this.afterPlayer : this.beforePlayer;
-    const notPlayer = useMastered ? this.beforePlayer : this.afterPlayer;
-    const seek = notPlayer.playing() ? notPlayer.seek() : 0;
-    notPlayer.pause();
-    if (!player.playing()) {
-      player.play();
-      player.seek(seek);
+  play() {
+    if (!this.songKey) return;
+    if (!this.activePlayer.playing()) {
+      this.inactivePlayer.pause();
+      this.activePlayer.play();
+      this.activePlayer.seek(this.seek);
+      this.emit(this.EventKeys.Playing, true);
     }
   }
+
+  emit(key, detail) {
+    const e = new CustomEvent(key, {
+      detail,
+    });
+    window.dispatchEvent(e);
+  }
+  observe(key, callback) {
+    if (!key) {
+      console.error("Cannot observe AudioPlayer without key.");
+    }
+    window.addEventListener(EventKeys.PlayerState(key), callback);
+    return () =>
+      window.removeEventListener(EventKeys.PlayerState(key), callback);
+  }
   stop = this.unloadSongs;
+  get isPlaying() {
+    return this.afterPlayer.playing() || this.beforePlayer.playing();
+  }
+  get activePlayer() {
+    return this.enableMastering ? this.afterPlayer : this.beforePlayer;
+  }
+  get inactivePlayer() {
+    return this.enableMastering ? this.beforePlayer : this.afterPlayer;
+  }
 }
 
 if (!window.Player) {
   window.Player = new AudioPlayer();
+  observeSongSelect((e) => window.Player.loadSong(e.detail.songKey));
 }

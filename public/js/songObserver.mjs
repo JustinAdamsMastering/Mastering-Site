@@ -1,4 +1,7 @@
 //////////////
+
+import { dispatchSongSelect } from "./eventsBus.mjs";
+
 // consts
 const observerElement = document.querySelector(".song-select");
 const songElements = document.querySelectorAll("[data-song]");
@@ -21,7 +24,7 @@ const handleIntersection = (entries, observer) => {
           : el.classList.remove("focused"),
       );
       if (selectTimeout) clearTimeout(selectTimeout);
-      console.log(songKey);
+      dispatchSongSelect(songKey);
     }
   }, 300);
 };

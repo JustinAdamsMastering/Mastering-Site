@@ -31,6 +31,7 @@
     </header>
     <main>
       <!-- <h1>Contact for Enquiries</h1> -->
+
       <h1>Hear my work.</h1>
       <div class="song-select">
         <ul>
@@ -46,17 +47,31 @@
         <img class="circle-right spin" src="./public/img/cassette_circle.webp" width="52px" />
         <span class="title">The Long Band Name<br>The Long Song Name Too</span>
       </div>
-      <div class="casette">
+      <!-- <div class="casette">
         <img src="./public/img/after_cassette-min.webp" width="390px" height="auto" />
         <img class="circle-left spin" src="./public/img/cassette_circle.webp" width="52px" />
         <img class="circle-right spin" src="./public/img/cassette_circle.webp" width="52px" />
         <span class="title">The Long Band Name<br>The Long Song Name Too</span>
+      </div> -->
+
+      <div class="controls">
+        <button data-action="play">Play</button>
+        <button data-action="pause">Pause</button>
+        <label data-toggled="" class="toggle">
+          <button data-action="toggle-mastering">
+            <div></div>
+          </button>
+          <span class="toggle-on">Mastering On</span>
+          <span class="toggle-off">Mastering Off</span>
+        </label>
       </div>
     </main>
   </div>
   <script type="module" src="./public/js/songObserver.mjs"></script>
   <script type="text/javascript" src="./public/js/howler.js"></script>
   <script type="module" src="./public/js/songPlayer.mjs"></script>
+  <script type="text/javascript" src="./public/js/toggles.js"></script>
+  <script type="text/javascript" src="./public/js/index.js"></script>
 </body>
 
 </html>

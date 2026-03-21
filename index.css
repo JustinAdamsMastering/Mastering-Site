@@ -9,6 +9,8 @@
   --color-light: #eee;
   --color-text: #eee;
   --color-bg: #080808;
+  interpolate-size: allow-keywords;
+  transition-behavior: allow-discrete;
 }
 
 html {
@@ -37,5 +39,79 @@ a {
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+@property --toggle-color {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+label.toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  button {
+    width: 80px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding-inline: 3px;
+    padding-block: 3px;
+    border-radius: 10px;
+
+    display: grid;
+    transition: grid-template-columns 500ms;
+    grid-template-columns: 0fr min-content 1fr;
+
+  }
+
+  .toggle-on {
+    display: none;
+  }
+
+  .toggle-off {
+    display: initial;
+  }
+
+  &>button>div {
+    box-shadow: none;
+    transition: --toggle-color 0.5s;
+    --toggle-color: 0%;
+    grid-column: 2/3;
+    pointer-events: none;
+    aspect-ratio: 1/1;
+    height: 100%;
+    background-color: color-mix(in srgb, oklch(84% 0.18 106) var(--toggle-color), oklch(60% 0 272));
+    /* background-color: color-mix(in oklch, oklch(84% 0.18 106) var(--toggle-color), oklch(60% 0 272)); */
+    transition: --toggle-color 0.5s;
+    border-radius: 8px;
+
+  }
+
+  &[data-toggled="true"] {
+    .toggle-on {
+      display: initial;
+    }
+
+    .toggle-off {
+      display: none;
+    }
+
+    button {
+
+      grid-template-columns: 1fr min-content 0fr;
+
+      &>div {
+        --toggle-color: 100%;
+      }
+
+    }
+
   }
 }
