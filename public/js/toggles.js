@@ -8,3 +8,14 @@ for (const toggle of toggles) {
       toggle.dataset.toggled === "true" ? "false" : "true";
   });
 }
+
+const controlGroups = document.querySelectorAll(".controlGroup");
+
+for (const group of controlGroups) {
+  const childButtons = group.querySelectorAll("button");
+  group.addEventListener("mousedown", (e) => {
+    for (btn of childButtons) {
+      btn.dataset.selected = btn === e.target;
+    }
+  });
+}

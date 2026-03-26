@@ -74,9 +74,8 @@ class AudioPlayer {
     if (!key) {
       console.error("Cannot observe AudioPlayer without key.");
     }
-    window.addEventListener(EventKeys.PlayerState(key), callback);
-    return () =>
-      window.removeEventListener(EventKeys.PlayerState(key), callback);
+    window.addEventListener(key, callback);
+    return () => window.removeEventListener(key, callback);
   }
   stop = this.unloadSongs;
   get isPlaying() {

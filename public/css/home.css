@@ -16,7 +16,7 @@ main {
   height: 100%;
   flex: 1;
   display: grid;
-  row-gap: 2rem;
+  row-gap: 1rem;
   padding-top: 15vh;
 
   h1 {
@@ -101,7 +101,7 @@ main {
   }
 }
 
-.casette {
+.cassette {
   position: relative;
   /* border: 1px solid sandybrown; */
 
@@ -133,6 +133,14 @@ main {
     opacity: 0.7;
   }
 
+  &[data-playing="false"]{
+    .spin {
+      animation-play-state: paused;
+    }
+  }
+  &[data-active="false"] {
+    display: none
+  }
   /* background-image: url("../img/before_cassette-min.webp"); */
 }
 
