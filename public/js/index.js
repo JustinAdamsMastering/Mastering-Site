@@ -37,4 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
   for (const cassette of cassettes) {
     initCassette(cassette)
   }
+
+  const controls = document.querySelector(".controlGroup")
+  window.Player.observe(
+    window.Player.EventKeys.SongKey, () => {
+      const toggles = controls.querySelectorAll("button")
+      for (const toggle of toggles) {
+        toggle.dataset.selected = "false"
+      }
+    }
+  )
 })
