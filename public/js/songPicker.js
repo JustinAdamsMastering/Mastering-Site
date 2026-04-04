@@ -1,5 +1,7 @@
 //////////////
 
+import Player from './songPlayer.js'
+
 // setup
 const songSelect = document.querySelector(".song-select > ul")
 const songElements = songSelect.querySelectorAll("[data-song]")
@@ -11,7 +13,7 @@ const handleClick = (e) => {
   const dataset = e.target.dataset
   if (dataset?.song) {
     const songKey = dataset.song
-    window.Player.loadSong(songKey)
+    Player.loadSong(songKey)
   }
 }
 
@@ -33,8 +35,8 @@ const handleSongChanged = (e) => {
 songSelect.addEventListener('click', handleClick)
 
 document.addEventListener("DOMContentLoaded", function () {
-  window.Player.observe(window.Player.EventKeys.SongKey, handleSongChanged)
-  window.Player.loadSong(songElements[0].dataset.song)
+  Player.observe(Player.EventKeys.SongKey, handleSongChanged)
+  Player.loadSong(songElements[0].dataset.song)
 
   window.addEventListener("resize", () => {
     for (const el of songElements) {

@@ -8,10 +8,12 @@ class AudioPlayer {
     this.afterPlayer = null
     this.seek = 0
     this.fadeTime = 200
+    this.progressUpdater = null
     this.EventKeys = {
       Playing: "audioPlayer:isPlaying",
       SongKey: "audioPlayer:songKey",
       Mastering: "audioPlayer:isMastered",
+      Progress: "audioPlayer:progressChanged",
     }
   }
   unloadSongs(shouldFade) {
@@ -35,9 +37,6 @@ class AudioPlayer {
   loadSong(dataKey) {
     this.unloadSongs()
     this.songKey = dataKey
-    const song = songs[dataKey]
-    this.beforePlayer = new Howl({ src: [song.before] })
-    this.afterPlayer = new Howl({ src: [song.after] })
     this.emit(this.EventKeys.SongKey, dataKey)
   }
   setMastering(enableMastering) {
@@ -54,15 +53,37 @@ class AudioPlayer {
     this.seek = this.activePlayer.seek()
     this.activePlayer.pause()
     this.emit(this.EventKeys.Playing, false)
+    this.resetProgress()
   }
   play() {
     if (!this.songKey) return
-    if (!this.activePlayer.playing()) {
+    if (!this.isPlaying) {
+      const song = songs[this.songKey]
+      this.beforePlayer = new Howl({ src: [song.before] })
+      this.afterPlayer = new Howl({ src: [song.after] })
       this.inactivePlayer.pause()
       this.activePlayer.play()
       this.activePlayer.seek(this.seek)
       this.emit(this.EventKeys.Playing, true)
+      this.resetProgress()
+      this.initProgressEmitter()
     }
+  }
+
+  setSeek(percent) {
+    if (!this.activePlayer) return
+    this.seek = this.activePlayer.duration() * percent
+  }
+  resetProgress() {
+    if (this.progressUpdater)
+      clearInterval(this.progressUpdater)
+  }
+
+  initProgressEmitter() {
+    this.resetProgress()
+    this.progressUpdater = setInterval(() => {
+      this.emit(this.EventKeys.Progress, this.activePlayer.seek() / this.activePlayer.duration())
+    }, 200)
   }
 
   emit(key, detail) {
@@ -80,7 +101,7 @@ class AudioPlayer {
   }
   stop = this.unloadSongs;
   get isPlaying() {
-    return this.afterPlayer.playing() || this.beforePlayer.playing()
+    return Boolean(this.afterPlayer?.playing() || this.beforePlayer?.playing())
   }
   get activePlayer() {
     return this.enableMastering ? this.afterPlayer : this.beforePlayer
@@ -90,6 +111,6 @@ class AudioPlayer {
   }
 }
 
-if (!window.Player) {
-  window.Player = new AudioPlayer()
-}
+
+const Player = new AudioPlayer()
+export default Player

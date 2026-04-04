@@ -14,7 +14,7 @@ const controlGroups = document.querySelectorAll(".controlGroup");
 for (const group of controlGroups) {
   const childButtons = group.querySelectorAll("button");
   group.addEventListener("mousedown", (e) => {
-    for (btn of childButtons) {
+    for (const btn of childButtons) {
       btn.dataset.selected = btn === e.target;
     }
   });

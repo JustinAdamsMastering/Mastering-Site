@@ -1,5 +1,20 @@
 .controlGroup {
   display: flex;
+  gap: 1rem;
+
+  .progressBar {
+    input {
+      width: 100%;
+    }
+
+    width: 100%;
+  }
+
+  .buttons {
+    display: flex;
+  }
+
+  flex-direction: column;
 
   button {
     all: unset;
