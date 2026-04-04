@@ -23,7 +23,7 @@ main {
     font-size: 5rem;
     font-weight: 500;
     text-align: center;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-name: fadeInLeft;
     animation-timing-function: ease;
 
@@ -39,23 +39,30 @@ main {
 
 .song-select {
   position: relative;
-  scroll-timeline: --song-select-scroll;
   mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
+  overflow: hidden;
+  width: 100%;
+  margin-top: 3rem;
 
   ul {
-    max-width: 50ch;
+    width: 200%;
     mask: linear-gradient(to right, transparent 0, black 30%, black 70%, transparent 100%);
     display: flex;
     align-items: center;
+    justify-content: center;
     list-style-type: none;
-    overflow: hidden;
     gap: 3rem;
-    margin-top: 3rem;
     padding: 1rem;
-    padding-inline: 25ch;
     scroll-snap-type: x mandatory;
     font-size: 1.5rem;
-    transition: opacity 0.2s;
+
+    opacity: 0;
+    animation: fadeIn 0.5s ease 1.5s forwards;
+
+    @starting-style {
+      opacity: 0;
+    }
+
 
     li {
       cursor: pointer;
@@ -90,6 +97,17 @@ main {
     transform: translateX(0);
   }
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 
 @keyframes spin {
   from {
@@ -133,14 +151,16 @@ main {
     opacity: 0.7;
   }
 
-  &[data-playing="false"]{
+  &[data-playing="false"] {
     .spin {
       animation-play-state: paused;
     }
   }
+
   &[data-active="false"] {
     display: none
   }
+
   /* background-image: url("../img/before_cassette-min.webp"); */
 }
 
