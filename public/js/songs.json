@@ -2,19 +2,19 @@
   "filmScore": {
     "title": "Freeze Ray",
     "band": "Neil Patrick Harris",
-    "before": "/public/audio/My_Freeze_Ray-With_Vocals.mp3",
-    "after": "/public/audio/My_Freeze_Ray-Instrumental.mp3"
+    "before": "./public/audio/My_Freeze_Ray-With_Vocals.mp3",
+    "after": "./public/audio/My_Freeze_Ray-Instrumental.mp3"
   },
   "popRock": {
     "title": "Freeze Ray",
     "band": "Neil Patrick Harris",
-    "before": "/public/audio/My_Freeze_Ray-With_Vocals.mp3",
-    "after": "/public/audio/My_Freeze_Ray-Instrumental.mp3"
+    "before": "./public/audio/My_Freeze_Ray-With_Vocals.mp3",
+    "after": "./public/audio/My_Freeze_Ray-Instrumental.mp3"
   },
   "jazz": {
     "title": "Freeze Ray",
     "band": "Neil Patrick Harris",
-    "before": "/public/audio/My_Freeze_Ray-With_Vocals.mp3",
-    "after": "/public/audio/My_Freeze_Ray-Instrumental.mp3"
+    "before": "./public/audio/My_Freeze_Ray-With_Vocals.mp3",
+    "after": "./public/audio/My_Freeze_Ray-Instrumental.mp3"
   }
 }
