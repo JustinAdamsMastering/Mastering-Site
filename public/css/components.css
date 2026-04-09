@@ -74,3 +74,53 @@
     }
   }
 }
+
+
+/* --- Slider --- */
+
+.progressBar {
+  --slider-color: rgb(118, 118, 118);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--slider-color);
+  height: 6px;
+  border-radius: 2px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-track {
+  background: var(--slider-color);
+  height: 6px;
+  border-radius: 2px;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 28px;
+  background: var(--slider-color);
+  border-radius: 2px;
+  border: none;
+  margin-top: -11px;
+  box-shadow: 0 0 2px 0 black;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 28px;
+  background: var(--slider-color);
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 0 2px 0 black;
+}
+
+/* --- */
