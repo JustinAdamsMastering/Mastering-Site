@@ -115,3 +115,7 @@ label.toggle {
 
   }
 }
+
+.no-interaction {
+  pointer-events: none;
+}

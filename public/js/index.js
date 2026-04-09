@@ -18,6 +18,9 @@ document.documentElement.addEventListener("click", (e) => {
     case "pause":
       Player.pause()
       break
+    case "stop":
+      Player.stop()
+      break
   }
 })
 
@@ -49,15 +52,19 @@ Player.observe(
 )
 
 const progressBar = controls.querySelector("#progressBar")
+progressBar?.classList.add('no-interaction')
 Player.observe(
   Player.EventKeys.Progress, (e) => {
-    console.log(progressBar.value)
     progressBar.value = e.detail.toString()
+  }
+)
+Player.observe(
+  Player.EventKeys.Playing, (e) => {
+    progressBar.classList.toggle('no-interaction', !e.detail)
   }
 )
 progressBar.addEventListener('mousedown', () => Player.pause())
 progressBar.addEventListener('mouseup', () => {
-  console.log(progressBar.value)
   Player.setSeek(progressBar.value)
   Player.play()
 })

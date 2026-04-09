@@ -43,8 +43,8 @@ class AudioPlayer {
     if (this.enableMastering === enableMastering) return
     if (this.isPlaying) {
       this.activePlayer.pause()
-      this.inactivePlayer.play()
       this.inactivePlayer.seek(this.activePlayer.seek())
+      this.inactivePlayer.play()
     }
     this.enableMastering = enableMastering
     this.emit(this.EventKeys.Mastering, enableMastering)
@@ -53,7 +53,7 @@ class AudioPlayer {
     this.seek = this.activePlayer.seek()
     this.activePlayer.pause()
     this.emit(this.EventKeys.Playing, false)
-    this.resetProgress()
+    this.stopUpdatingProgress()
   }
   play() {
     if (!this.songKey) return
@@ -65,28 +65,31 @@ class AudioPlayer {
       this.activePlayer.play()
       this.activePlayer.seek(this.seek)
       this.emit(this.EventKeys.Playing, true)
-      this.resetProgress()
-      this.initProgressEmitter()
+      this.startUpdatingProgress()
     }
   }
 
   setSeek(percent) {
+    this.emit(this.EventKeys.Progress, percent)
     if (!this.activePlayer) return
     this.seek = this.activePlayer.duration() * percent
   }
-  resetProgress() {
-    if (this.progressUpdater)
+  stopUpdatingProgress() {
+    if (this.progressUpdater) {
       clearInterval(this.progressUpdater)
+      this.progressUpdater = null
+    }
   }
 
-  initProgressEmitter() {
-    this.resetProgress()
+  startUpdatingProgress() {
     this.progressUpdater = setInterval(() => {
-      this.emit(this.EventKeys.Progress, this.activePlayer.seek() / this.activePlayer.duration())
+      this.emit(this.EventKeys.Progress, this.activePlayer.seek() / (this.activePlayer.duration() || 1))
     }, 200)
   }
 
   emit(key, detail) {
+    // if (![this.EventKeys.Progress].includes(key))
+    // console.log("Emitting", { key, detail })
     const e = new CustomEvent(key, {
       detail,
     })
@@ -99,7 +102,11 @@ class AudioPlayer {
     window.addEventListener(key, callback)
     return () => window.removeEventListener(key, callback)
   }
-  stop = this.unloadSongs;
+  stop() {
+    this.pause()
+    this.stopUpdatingProgress()
+    this.setSeek(0)
+  }
   get isPlaying() {
     return Boolean(this.afterPlayer?.playing() || this.beforePlayer?.playing())
   }

@@ -12,10 +12,12 @@ for (const toggle of toggles) {
 const controlGroups = document.querySelectorAll(".controlGroup");
 
 for (const group of controlGroups) {
-  const childButtons = group.querySelectorAll("button");
-  group.addEventListener("mousedown", (e) => {
+  const buttons = group.querySelector(".buttons")
+  const childButtons = buttons.querySelectorAll("button");
+  buttons.addEventListener("mousedown", (e) => {
     for (const btn of childButtons) {
-      btn.dataset.selected = btn === e.target;
+      if (btn.dataset.action !== 'stop')
+        btn.dataset.selected = btn === e.target;
     }
   });
 }
