@@ -120,6 +120,7 @@ main {
 }
 
 .cassette {
+  user-select: none;
   position: relative;
   /* border: 1px solid sandybrown; */
 

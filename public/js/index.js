@@ -24,11 +24,12 @@ document.documentElement.addEventListener("click", (e) => {
   }
 })
 
+
 const cassettes = document.querySelectorAll(".cassette")
 const initCassette = (cassette) => {
   Player.observe(
     Player.EventKeys.Playing,
-    ({ detail: isPlaying }) => (cassette.dataset.playing = isPlaying),
+    ({ detail }) => (cassette.dataset.playing = detail.isPlaying),
   )
   Player.observe(
     Player.EventKeys.Mastering,
@@ -50,6 +51,17 @@ Player.observe(
     }
   }
 )
+Player.observe(
+  Player.EventKeys.Playing, ({ detail }) => {
+    if (detail.isStopped) {
+
+      const toggles = controls.querySelectorAll("button")
+      for (const toggle of toggles) {
+        toggle.dataset.selected = "false"
+      }
+    }
+  }
+)
 
 const progressBar = controls.querySelector("#progressBar")
 progressBar?.classList.add('no-interaction')
@@ -59,12 +71,17 @@ Player.observe(
   }
 )
 Player.observe(
-  Player.EventKeys.Playing, (e) => {
-    progressBar.classList.toggle('no-interaction', !e.detail)
+  Player.EventKeys.Playing, ({ detail }) => {
+    progressBar.classList.toggle('no-interaction', !detail.isPlaying)
   }
 )
-progressBar.addEventListener('mousedown', () => Player.pause())
-progressBar.addEventListener('mouseup', () => {
-  Player.setSeek(progressBar.value)
-  Player.play()
+
+progressBar.addEventListener('pointerdown', (e) => {
+  Player.pause()
 })
+
+const doUnpause = () => {
+  Player.setSeek(progressBar.value)
+  Player.unpause()
+}
+window.addEventListener('pointerup', doUnpause)

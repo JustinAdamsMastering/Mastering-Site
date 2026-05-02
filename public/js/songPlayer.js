@@ -9,12 +9,17 @@ class AudioPlayer {
     this.seek = 0
     this.fadeTime = 200
     this.progressUpdater = null
-    this.EventKeys = {
-      Playing: "audioPlayer:isPlaying",
-      SongKey: "audioPlayer:songKey",
-      Mastering: "audioPlayer:isMastered",
-      Progress: "audioPlayer:progressChanged",
-    }
+  }
+  EventKeys = {
+    Playing: "audioPlayer:isPlaying",
+    SongKey: "audioPlayer:songKey",
+    Mastering: "audioPlayer:isMastered",
+    Progress: "audioPlayer:progressChanged",
+  }
+  PlayingStates = {
+    Play: "play",
+    Pause: "pause",
+    Stop: "stop"
   }
   unloadSongs(shouldFade) {
     for (const player of ["beforePlayer", "afterPlayer"]) {
@@ -32,7 +37,7 @@ class AudioPlayer {
       }
       this.seek = 0
     }
-    this.emit(this.EventKeys.Playing, false)
+    this.emit(this.EventKeys.Playing, PlayStates.stopped)
   }
   loadSong(dataKey) {
     this.unloadSongs()
@@ -52,8 +57,16 @@ class AudioPlayer {
   pause() {
     this.seek = this.activePlayer.seek()
     this.activePlayer.pause()
-    this.emit(this.EventKeys.Playing, false)
+    this.emit(this.EventKeys.Playing, PlayStates.paused)
     this.stopUpdatingProgress()
+  }
+  unpause() {
+    if (this.activePlayer && this.activePlayer.state() === "loaded" && !this.activePlayer.playing()) {
+      this.activePlayer.seek(this.seek)
+      this.activePlayer.play()
+      this.emit(this.EventKeys.Playing, PlayStates.playing)
+      this.startUpdatingProgress()
+    }
   }
   play() {
     if (!this.songKey) return
@@ -64,8 +77,10 @@ class AudioPlayer {
       this.inactivePlayer.pause()
       this.activePlayer.play()
       this.activePlayer.seek(this.seek)
-      this.emit(this.EventKeys.Playing, true)
+      this.emit(this.EventKeys.Playing, PlayStates.playing)
       this.startUpdatingProgress()
+      this.activePlayer.on('end', () => this.stop())
+      this.beforePlayer.on('end', () => this.stop())
     }
   }
 
@@ -104,8 +119,11 @@ class AudioPlayer {
   }
   stop() {
     this.pause()
+    this.emit(this.EventKeys.Progress, 0)
+    this.activePlayer.seek(0)
+    this.seek = 0
     this.stopUpdatingProgress()
-    this.setSeek(0)
+    this.emit(this.EventKeys.Playing, PlayStates.stopped)
   }
   get isPlaying() {
     return Boolean(this.afterPlayer?.playing() || this.beforePlayer?.playing())
@@ -118,6 +136,24 @@ class AudioPlayer {
   }
 }
 
+export const PlayStates = {
+  makeState({ isPlaying = false, isPaused = false, isStopped = false }) {
+    return {
+      isPlaying,
+      isPaused,
+      isStopped
+    }
+  },
+  get playing() {
+    return this.makeState({ isPlaying: true })
+  },
+  get paused() {
+    return this.makeState({ isPaused: true })
+  },
+  get stopped() {
+    return this.makeState({ isStopped: true })
+  }
+}
 
 const Player = new AudioPlayer()
 export default Player

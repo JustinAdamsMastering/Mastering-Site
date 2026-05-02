@@ -80,6 +80,7 @@
 
 .progressBar {
   --slider-color: rgb(118, 118, 118);
+  touch-action: none;
 }
 
 input[type="range"] {
