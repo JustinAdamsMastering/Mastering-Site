@@ -5,6 +5,7 @@ body {
 
 header {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
@@ -15,10 +16,15 @@ header {
 nav {
   font-size: 2rem;
 
+  
   ul {
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
     list-style: none;
     display: flex;
     gap: 1;
+    flex-wrap: wrap;
 
     li {
       padding: 0.5rem;
@@ -28,7 +34,6 @@ nav {
       border-left: 1px solid var(--color-text);
     }
   }
-
 }
 
 main {
