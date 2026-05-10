@@ -39,6 +39,9 @@ class AudioPlayer {
   loadSong(dataKey) {
     this.unloadSongs()
     this.songKey = dataKey
+    const song = songs[dataKey]
+    this.beforePlayer = new Howl({ src: [song.before], preload: true })
+    this.afterPlayer = new Howl({ src: [song.after], preload: true })
     this.emit(this.EventKeys.SongKey, dataKey)
   }
   setMastering(enableMastering) {
@@ -74,17 +77,15 @@ class AudioPlayer {
   play() {
     if (!this.songKey) return
     if (this.isPlaying) return
-    if (this.activePlayer?.state() === "loading") return
 
     const song = songs[this.songKey]
-    this.beforePlayer = new Howl({ src: [song.before] })
-    this.afterPlayer = new Howl({ src: [song.after] })
+    if (!this.beforePlayer) this.beforePlayer = new Howl({ src: [song.before] })
+    if (!this.afterPlayer) this.afterPlayer = new Howl({ src: [song.after] })
 
     const active = this.activePlayer
     const inactive = this.inactivePlayer
 
     const startPlayback = () => {
-      if (this.beforePlayer !== active && this.afterPlayer !== active) return
       inactive.pause()
       active.seek(this.seek)
       active.play()
@@ -95,6 +96,7 @@ class AudioPlayer {
     if (active.state() === "loaded") {
       startPlayback()
     } else {
+      if (active.state() !== "loading") active.load()
       active.once("load", startPlayback)
     }
 
@@ -133,9 +135,14 @@ class AudioPlayer {
     return () => window.removeEventListener(key, callback)
   }
   stop() {
+    this.beforePlayer?.pause()
+    this.afterPlayer?.pause()
+    this.beforePlayer?.seek(0)
+    this.afterPlayer?.seek(0)
+    this.seek = 0
     this.stopUpdatingProgress()
-    this.unloadSongs(false)
     this.emit(this.EventKeys.Progress, 0)
+    this.emit(this.EventKeys.Playing, PlayStates.stopped)
   }
   get isPlaying() {
     return Boolean(this.afterPlayer?.playing() || this.beforePlayer?.playing())
