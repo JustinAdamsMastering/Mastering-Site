@@ -1,6 +1,7 @@
 import Player from './songPlayer.js'
 
 document.documentElement.addEventListener("click", (e) => {
+  console.log(e.target.dataset)
   switch (e.target.dataset.action) {
     case "toggle-mastering":
       Player.setMastering(
@@ -64,7 +65,7 @@ Player.observe(
 )
 
 const progressBar = controls.querySelector("#progressBar")
-progressBar?.classList.add('no-interaction')
+progressBar.classList.add('no-interaction')
 Player.observe(
   Player.EventKeys.Progress, (e) => {
     progressBar.value = e.detail.toString()
@@ -76,12 +77,30 @@ Player.observe(
   }
 )
 
-progressBar.addEventListener('pointerdown', (e) => {
-  Player.pause()
-})
-
 const doUnpause = () => {
   Player.setSeek(progressBar.value)
   Player.unpause()
 }
-window.addEventListener('pointerup', doUnpause)
+
+let seekingInProgress = false
+progressBar.addEventListener('pointerdown', (e) => {
+  seekingInProgress = true
+  progressBar.setPointerCapture(e.pointerId)
+  Player.pause()
+})
+
+progressBar.addEventListener('pointerup', (e) => {
+  if (!seekingInProgress) return
+  seekingInProgress = false
+  Player.setSeek(progressBar.value)
+  Player.unpause()
+})
+
+window.addEventListener('keypress', (e) => {
+  if (e.key === ' ') {
+    if (!e.target.dataset?.action) {
+      // Don't fire on buttons
+      Player.stop()
+    }
+  }
+})

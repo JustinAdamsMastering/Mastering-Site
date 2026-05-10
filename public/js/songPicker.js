@@ -17,6 +17,15 @@ const handleClick = (e) => {
   }
 }
 
+const handleKey = (e) => {
+  const dataset = e.target.dataset
+  if (dataset?.song && e.key === " ") {
+    const songKey = dataset.song
+    Player.loadSong(songKey)
+  }
+}
+
+
 let selectedSong = null
 const handleSongChanged = (e) => {
   selectedSong = e.detail
@@ -33,6 +42,7 @@ const handleSongChanged = (e) => {
 ///////////////////
 // more setup
 songSelect.addEventListener('click', handleClick)
+songSelect.addEventListener('keypress', handleKey)
 
 document.addEventListener("DOMContentLoaded", function () {
   Player.observe(Player.EventKeys.SongKey, handleSongChanged)

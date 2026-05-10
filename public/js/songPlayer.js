@@ -55,8 +55,8 @@ class AudioPlayer {
     this.emit(this.EventKeys.Mastering, enableMastering)
   }
   pause() {
-    this.seek = this.activePlayer.seek()
-    this.activePlayer.pause()
+    this.seek = this.activePlayer?.seek()
+    this.activePlayer?.pause()
     this.emit(this.EventKeys.Playing, PlayStates.paused)
     this.stopUpdatingProgress()
   }
@@ -120,7 +120,8 @@ class AudioPlayer {
   stop() {
     this.pause()
     this.emit(this.EventKeys.Progress, 0)
-    this.activePlayer.seek(0)
+    this.activePlayer?.seek(0)
+    this.inactivePlayer?.seek(0)
     this.seek = 0
     this.stopUpdatingProgress()
     this.emit(this.EventKeys.Playing, PlayStates.stopped)
