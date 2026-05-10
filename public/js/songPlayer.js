@@ -17,6 +17,7 @@ class AudioPlayer {
     Progress: "audioPlayer:progressChanged",
   }
   unloadSongs(shouldFade = true) {
+    this.stopUpdatingProgress()
     for (const player of ["beforePlayer", "afterPlayer"]) {
       const p = this[player]
       if (!p) continue
@@ -32,6 +33,7 @@ class AudioPlayer {
       }
     }
     this.seek = 0
+    this.emit(this.EventKeys.Progress, 0)
     this.emit(this.EventKeys.Playing, PlayStates.stopped)
   }
   loadSong(dataKey) {
@@ -112,6 +114,7 @@ class AudioPlayer {
   }
   startUpdatingProgress() {
     this.progressUpdater = setInterval(() => {
+      if (!this.activePlayer) return
       this.emit(
         this.EventKeys.Progress,
         this.activePlayer.seek() / (this.activePlayer.duration() || 1)
