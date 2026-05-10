@@ -17,10 +17,11 @@ main {
   flex: 1;
   display: grid;
   row-gap: 1rem;
-  padding-top: 15vh;
+  padding-top: 4vh;
+  padding-bottom: 8vh;
 
   h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 500;
     text-align: center;
     animation-duration: 2s;
@@ -31,9 +32,19 @@ main {
       opacity: 0;
       transform: translateX(-50%);
     }
+
+
   }
 
   place-items: center;
+
+  @media (min-width: 700px) {
+    h1 {
+      font-size: 5rem;
+    }
+
+    padding-top: 15vh;
+  }
 }
 
 
