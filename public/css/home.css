@@ -4,11 +4,7 @@ body {
 
 .backdrop {
   flex: 1;
-  backdrop-filter: grayscale(50%) brightness(20%);
   /* backdrop-filter: grayscale(50%) blur(20px) brightness(20%); */
-  transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-
 }
 
 .logo {

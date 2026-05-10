@@ -1,7 +1,7 @@
 import Player from './songPlayer.js'
 
 document.documentElement.addEventListener("click", (e) => {
-  console.log(e.target.dataset)
+  // console.log(e.target.dataset)
   switch (e.target.dataset.action) {
     case "toggle-mastering":
       Player.setMastering(
@@ -99,7 +99,7 @@ progressBar.addEventListener('pointerup', (e) => {
 window.addEventListener('keypress', (e) => {
   if (e.key === ' ') {
     if (!e.target.dataset?.action) {
-      // Don't fire on buttons
+      // Let buttons handle their own keypress
       Player.stop()
     }
   }
