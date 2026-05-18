@@ -167,8 +167,6 @@ main {
   font-weight: 300;
   font-style: italic;
   text-decoration: underline;
-
-  color: #eee; /* or white */
 }
   &[data-playing="false"] {
     .spin {
