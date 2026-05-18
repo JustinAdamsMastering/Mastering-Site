@@ -179,7 +179,7 @@ main {
   animation: spin infinite 3s linear;
 }
 h1.hero-title {
-  color: purple;
+  color: white;
   font-size: 3.5rem;
   font-family: "Lato", sans-serif;
   font-weight: 300;
