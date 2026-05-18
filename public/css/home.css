@@ -163,9 +163,9 @@ main {
     opacity: 0.7;
   }
 main h1.hero-title {
- color: green !important;
- font-family: "Lato", sans-serif !important;
-  font-style: italic !important;
+ color: green;
+ font-family: "Lato", sans-serif;
+  font-style: italic;
 }
   &[data-playing="false"] {
     .spin {
