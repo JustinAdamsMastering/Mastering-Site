@@ -163,7 +163,7 @@ main {
     mix-blend-mode: multiply;
     opacity: 0.7;
   }
-.hero-title {
+main h1.hero-title {
  color: green !important;
  font-family: "Lato", sans-serif !important;
   font-style: italic !important;
