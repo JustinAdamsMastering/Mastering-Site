@@ -162,11 +162,6 @@ main {
     mix-blend-mode: multiply;
     opacity: 0.7;
   }
-main h1.hero-title {
- color: green;
- font-family: "Lato", sans-serif;
-  font-style: italic;
-}
   &[data-playing="false"] {
     .spin {
       animation-play-state: paused;
@@ -182,4 +177,9 @@ main h1.hero-title {
 
 .spin {
   animation: spin infinite 3s linear;
+}
+h1.hero-title {
+  color: purple !important;
+  font-size: 80px !important;
+  font-family: "Lato", sans-serif !important;
 }
