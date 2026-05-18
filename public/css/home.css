@@ -10,6 +10,7 @@ body {
 .logo {
   font-style: italic;
   font-weight: 400;
+  transform: translateX(-10px);
 }
 
 main {
