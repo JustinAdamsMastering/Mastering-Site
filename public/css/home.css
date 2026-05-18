@@ -163,7 +163,9 @@ main {
     opacity: 0.7;
   }
 .hero-title {
- color: green;
+ color: green !important;
+ font-family: "Lato", sans-serif !important;
+  font-style: italic !important;
 }
   &[data-playing="false"] {
     .spin {
