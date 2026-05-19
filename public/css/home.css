@@ -142,11 +142,13 @@ main {
   }
 }
 
+.cassette.intro {
+  animation: cassetteIntro 1.2s ease forwards;
+}
 .cassette {
+  opacity: 1;
   user-select: none;
   position: relative;
-  opacity: 0;
-  animation: cassetteIntro 1.2s ease forwards;
   /* border: 1px solid sandybrown; */
 
   .circle-left {
