@@ -142,16 +142,10 @@ main {
 
 }
 .cassette {
-  opacity: 0;
-  animation: cassetteFadeIn 0.8s ease forwards;
   user-select: none;
   position: relative;
   /* border: 1px solid sandybrown; */
 }
-.cassette[data-active="false"] {
-  display: none;
-}
-
   .circle-left {
     position: absolute;
     top: 35.5%;
