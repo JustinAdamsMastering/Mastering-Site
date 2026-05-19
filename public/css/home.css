@@ -131,9 +131,20 @@ main {
     transform: rotate(360deg);
   }
 }
+ @keyframes cassetteFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 }
 .cassette {
+  opacity: 0;
+  animation: cassetteFadeIn 0.8s ease forwards;
+}
   user-select: none;
   position: relative;
   /* border: 1px solid sandybrown; */
@@ -144,6 +155,7 @@ main {
     left: 22.6%;
     filter: brightness(0.7);
   }
+ 
 
   .circle-right {
     position: absolute;
