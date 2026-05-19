@@ -104,8 +104,3 @@ window.addEventListener('keypress', (e) => {
     }
   }
 })
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".cassette").forEach((cassette) => {
-    cassette.classList.add("intro");
-  });
-});
