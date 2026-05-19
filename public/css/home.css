@@ -149,7 +149,18 @@ main {
     left: 64.5%;
     filter: brightness(0.7);
   }
-
+  
+  @keyframes pageIntro {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
   .title {
     position: absolute;
     top: 11%;
