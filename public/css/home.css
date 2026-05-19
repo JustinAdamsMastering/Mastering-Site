@@ -135,12 +135,17 @@ main {
   user-select: none;
   position: relative;
   /* border: 1px solid sandybrown; */
-
+  animation-duration: 2s;
+    animation-name: fadeInLeft;
+    animation-timing-function: ease;
   .circle-left {
     position: absolute;
     top: 35.5%;
     left: 22.6%;
     filter: brightness(0.7);
+    animation-duration: 2s;
+    animation-name: fadeInLeft;
+    animation-timing-function: ease; 
   }
 
   .circle-right {
@@ -148,6 +153,10 @@ main {
     top: 35.5%;
     left: 64.5%;
     filter: brightness(0.7);
+    animation-duration: 2s;
+    animation-name: fadeInLeft;
+    animation-timing-function: ease;
+  
   }
 
   .title {
@@ -162,6 +171,9 @@ main {
     font-family: 'Shadows Into Light', Courier, monospace;
     mix-blend-mode: multiply;
     opacity: 0.7;
+    animation-duration: 2s;
+    animation-name: fadeInLeft;
+    animation-timing-function: ease;
   }
   &[data-playing="false"] {
     .spin {
