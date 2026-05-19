@@ -50,7 +50,7 @@ main {
 
 
 .song-select {
-  transform: translateY(30px);
+  transform: translateY(-20px);
   position: relative;
   mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
   overflow: hidden;
