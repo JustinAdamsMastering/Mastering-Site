@@ -145,6 +145,9 @@ main {
 .cassette {
   user-select: none;
   position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cassetteIntro 0.8s ease forwards;
   /* border: 1px solid sandybrown; */
 
   .circle-left {
@@ -181,7 +184,7 @@ main {
   }
 
   &[data-active="false"] {
-    display: none
+    display: none;
   }
 
   /* background-image: url("../img/before_cassette-min.webp"); */
