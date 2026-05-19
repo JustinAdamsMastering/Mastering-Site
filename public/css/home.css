@@ -135,6 +135,9 @@ main {
 .cassette {
   user-select: none;
   position: relative;
+  animation-duration: 2s;
+  animation-name: fadeInLeft;
+  animation-timing-function: ease;
   /* border: 1px solid sandybrown; */
 
   .circle-left {
