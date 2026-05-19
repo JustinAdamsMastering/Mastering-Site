@@ -132,6 +132,12 @@ main {
   }
 }
 
+.cassette.intro-animation {
+  animation-duration: 2s;
+  animation-name: fadeInLeft;
+  animation-timing-function: ease;
+}
+
 .cassette {
   user-select: none;
   position: relative;
