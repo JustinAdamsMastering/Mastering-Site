@@ -133,7 +133,7 @@ main {
 }
 
 .cassette-wrapper {
-  animation: fadeInLeft 2s ease;
+  animation: fadeIn 1.5s ease;
 }
 
 .cassette {
