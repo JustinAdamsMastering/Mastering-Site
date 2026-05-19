@@ -132,6 +132,10 @@ main {
   }
 }
 
+.cassette-wrapper {
+  animation: fadeInLeft 2s ease;
+}
+
 .cassette {
   user-select: none;
   position: relative;
