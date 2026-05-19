@@ -131,28 +131,19 @@ main {
     transform: rotate(360deg);
   }
 }
- @keyframes cassetteFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 }
 .cassette {
   user-select: none;
   position: relative;
   /* border: 1px solid sandybrown; */
-}
+
   .circle-left {
     position: absolute;
     top: 35.5%;
     left: 22.6%;
     filter: brightness(0.7);
   }
- 
 
   .circle-right {
     position: absolute;
