@@ -189,3 +189,7 @@ h1.hero-title {
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;
 }
+
+.controlGroup {
+  transform: translateY(30px);
+}
