@@ -56,7 +56,6 @@ main {
   overflow: hidden;
   width: 100%;
   margin-top: 3rem;
-  font-size: 3rem;
   ul {
     width: 200%;
     mask: linear-gradient(to right, transparent 0, black 30%, black 70%, transparent 100%);
@@ -67,7 +66,7 @@ main {
     gap: 3rem;
     padding: 1rem;
     scroll-snap-type: x mandatory;
-    font-size: 1.5rem;
+    font-size: 3rem;
 
     opacity: 0;
     animation: fadeIn 0.5s ease 1.5s forwards;
