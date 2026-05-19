@@ -154,17 +154,6 @@ main {
   animation: pageIntro 1.5s ease forwards;
   opacity: 0;
   }
-  
-  @keyframes pageIntro {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
  
   .title {
     position: absolute;
