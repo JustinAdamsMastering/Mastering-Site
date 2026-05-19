@@ -131,11 +131,22 @@ main {
     transform: rotate(360deg);
   }
 }
-
+@keyframes cassetteIntro {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .cassette {
   user-select: none;
   position: relative;
+  opacity: 0;
+  animation: cassetteIntro 1.2s ease forwards;
   /* border: 1px solid sandybrown; */
 
   .circle-left {
