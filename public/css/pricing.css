@@ -15,12 +15,13 @@ body {
 .pricing-page {
   display: flex;
   justify-content: center;
-  padding: 8rem 1.5rem;
+  padding: 4rem 1.5rem;
   color: white;
 }
 
 .pricing-container {
   max-width: 700px;
+  margin-top: 4rem;
 }
 
 .pricing-main {
