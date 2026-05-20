@@ -1,3 +1,6 @@
+html {
+  font-size: 16px;
+}
 body {
   background-image: url("../img/pricing-min-blurred.webp");
   background-size: cover;
@@ -17,7 +20,7 @@ body {
 
 .pricing-main {
   font-family: "Raleway", sans-serif;
-  font-size: 16.7pt;
+  font-size: 1.25rem;
   font-weight: 500;
   margin-bottom: 1rem;
 }
@@ -28,7 +31,7 @@ body {
 
 .pricing-sub {
   font-family: "Raleway", sans-serif;
-  font-size: 10pt;
+  font-size: 0.95rem;
   font-weight: 400;
   margin-bottom: 0.75rem;
 }
@@ -42,7 +45,7 @@ body {
 
 .pricing-heading {
   font-family: "Raleway", sans-serif;
-  font-size: 16.7pt;
+  font-size: 1.25rem;
   font-weight: 500;
   margin-bottom: 1rem;
 }
@@ -55,12 +58,12 @@ body {
 
 .addon {
   font-family: "Raleway", sans-serif;
-  font-size: 13.3pt;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
 .addon-note {
-  font-size: 6pt;
+  font-size: 0.5rem;
   font-weight: 500;
   opacity: 0.8;
 }
