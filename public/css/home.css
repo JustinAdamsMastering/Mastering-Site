@@ -14,12 +14,12 @@ body {
 }
 
 main {
-  height: 100%;
-  flex: 1;
+  min-height: 100vh;
   display: grid;
-  row-gap: 1rem;
+  place-items: center;
   padding-top: 1vh;
-  padding-bottom: 2rem;
+  padding-bottom: 4vh;
+}
 
   h1 {
     font-size: 2.5rem;
