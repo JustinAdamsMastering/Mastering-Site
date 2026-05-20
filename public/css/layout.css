@@ -1,3 +1,6 @@
+html, body {
+  background-color: black;
+}
 body {
   min-height: 100svh;
   background-color: var(--color-bg);
