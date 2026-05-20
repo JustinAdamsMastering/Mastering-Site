@@ -14,7 +14,7 @@ body {
 }
 
 main {
-  min-height: 100vh;
+  height: 100%;
   flex: 1;
   display: grid;
   row-gap: 1rem;
@@ -50,7 +50,7 @@ main {
 
 
 .song-select {
-  margin-top: 1rem;
+  transform: translateY(-20px);
 }
   position: relative;
   mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
@@ -204,5 +204,5 @@ h1.hero-title {
 }
 
 .controlGroup {
-  margin-top: -75px;
+  transform: translateY(-75px);
 }
