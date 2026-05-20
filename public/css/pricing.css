@@ -1,1 +1,60 @@
+.pricing-page {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  color: white;
+}
 
+.pricing-container {
+  max-width: 700px;
+}
+
+.pricing-main {
+  font-family: "Raleway", sans-serif;
+  font-size: 16.7pt;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.pricing-sub {
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-divider {
+  border: none;
+  height: 2px;
+  background: white;
+  margin: 2rem 0;
+}
+
+.pricing-heading {
+  font-family: "Raleway", sans-serif;
+  font-size: 16.7pt;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.addons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.addon {
+  font-family: "Raleway", sans-serif;
+  font-size: 13.3pt;
+  font-weight: 500;
+}
+
+.addon-note {
+  font-size: 6pt;
+  font-weight: 500;
+  opacity: 0.8;
+}
