@@ -14,12 +14,12 @@ body {
 }
 
 main {
-  min-height: 100vh;
+  height: 100%;
+  flex: 1;
   display: grid;
-  place-items: center;
+  row-gap: 1rem;
   padding-top: 1vh;
-  padding-bottom: 4vh;
-}
+  padding-bottom: 2rem;
 
   h1 {
     font-size: 2.5rem;
@@ -51,7 +51,6 @@ main {
 
 .song-select {
   transform: translateY(-20px);
-}
   position: relative;
   mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
   overflow: hidden;
