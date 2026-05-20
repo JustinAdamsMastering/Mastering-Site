@@ -19,7 +19,7 @@ main {
   display: grid;
   row-gap: 1rem;
   padding-top: 1vh;
-  padding-bottom: 0vh;
+  padding-bottom: 2rem;
 
   h1 {
     font-size: 2.5rem;
