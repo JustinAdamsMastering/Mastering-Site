@@ -70,8 +70,8 @@ body {
   font-weight: 500;
   margin: 0;
 
-  display: inline-block;
-  text-align: left;
+  display: block;
+  width: max-content;
 }
 
 .addon-note {
