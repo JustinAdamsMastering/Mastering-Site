@@ -53,7 +53,7 @@ main {
   mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
   overflow: hidden;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   ul {
     width: 200%;
     mask: linear-gradient(to right, transparent 0, black 30%, black 70%, transparent 100%);
