@@ -1,7 +1,10 @@
 .logo {
+  font-family: "Raleway", sans-serif;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 300;
+  margin: 0;
   transform: translateX(-10px);
+}
 }
 body {
   min-height: 100svh;
