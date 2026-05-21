@@ -3,8 +3,6 @@
   font-weight: 400;
   transform: translateX(-10px);
 }
-}
-}
 body {
   min-height: 100svh;
   background-color: var(--color-bg);
