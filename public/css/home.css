@@ -7,12 +7,6 @@ body {
   /* backdrop-filter: grayscale(50%) blur(20px) brightness(20%); */
 }
 
-.logo {
-  font-style: italic;
-  font-weight: 400;
-  transform: translateX(-10px);
-}
-
 main {
   height: 100%;
   flex: 1;
