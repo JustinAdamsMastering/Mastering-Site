@@ -7,7 +7,13 @@ body {
 }
 
 .backdrop {
-  flex: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: contain;
+  z-index: -1;
   /* backdrop-filter: grayscale(50%) blur(20px) brightness(20%); */
 }
 
@@ -54,6 +60,7 @@ main {
   overflow: hidden;
   width: 100%;
   margin-top: 1.5rem;
+
   ul {
     width: 200%;
     mask: linear-gradient(to right, transparent 0, black 30%, black 70%, transparent 100%);
@@ -129,11 +136,13 @@ main {
     transform: rotate(360deg);
   }
 }
+
 @keyframes cassetteIntro {
   from {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -172,6 +181,7 @@ main {
     mix-blend-mode: multiply;
     opacity: 0.7;
   }
+
   &[data-playing="false"] {
     .spin {
       animation-play-state: paused;
@@ -188,6 +198,7 @@ main {
 .spin {
   animation: spin infinite 3s linear;
 }
+
 h1.hero-title {
   display: none;
   color: white;

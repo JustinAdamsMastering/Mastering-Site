@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "node", 
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "checkJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["public/js/*"]
+    }
+  },
+  "include": ["public/js/**/*"],
+  "exclude": ["node_modules"]
+}
