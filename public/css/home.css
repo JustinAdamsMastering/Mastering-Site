@@ -53,12 +53,50 @@ main {
 }
 
 
+.songs-list {
+  position: relative;
+  width: 100%;
+
+  .song-controls {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    pointer-events: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+
+    button {
+      all: unset;
+      pointer-events: all;
+      background: rgba(88, 88, 88, 0.15);
+      border-radius: 4px;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 1rem;
+      transition: all 0.2s;
+
+      &:hover {
+        transform: translateY(-2px);
+        background: rgba(120, 120, 120, 0.3)
+      }
+
+      &:active {
+        transform: translateY(4px);
+      }
+    }
+  }
+}
+
 .song-select {
   /* transform: translateY(-20px); */
   position: relative;
   user-select: none;
   /* mask-image: linear-gradient(to right, white 0%, white 50%, black 100%); */
-  overflow: auto;
+  overflow: hidden;
   width: 100%;
   margin-top: 1.5rem;
   mask: linear-gradient(to right, transparent 20vw, black 40vw, black 60vw, transparent 80vw);
@@ -66,6 +104,7 @@ main {
   @media(max-width: 1200px) {
     mask: linear-gradient(to right, transparent 5vw, black 20vw, black 80vw, transparent 95vw);
   }
+
 
   ul {
     width: 200%;
@@ -89,16 +128,13 @@ main {
 
     li {
       cursor: pointer;
-      transition: scale 0.5s;
+      transition: scale 0.5s, opacity 0.5s;
       scroll-snap-align: center;
       text-wrap: nowrap;
 
       &:not(.focused) {
         scale: 0.4;
-      }
-
-      &:hover {
-        opacity: 0.8;
+        opacity: 0;
       }
     }
   }
