@@ -1,6 +1,7 @@
 html {
   background-color: #080808;
 }
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -16,6 +17,8 @@ button:focus-visible {
   --color-light: #eee;
   --color-text: #eee;
   --color-bg: #080808;
+  --transition-short: 0.15s;
+  --transition-med: 0.3s;
   interpolate-size: allow-keywords;
   transition-behavior: allow-discrete;
 }

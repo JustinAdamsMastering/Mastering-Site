@@ -54,25 +54,30 @@ main {
 
 
 .song-select {
-  transform: translateY(-20px);
+  /* transform: translateY(-20px); */
   position: relative;
-  mask-image: linear-gradient(to right, white 0%, white 50%, black 100%);
+  user-select: none;
+  /* mask-image: linear-gradient(to right, white 0%, white 50%, black 100%); */
   overflow: hidden;
   width: 100%;
   margin-top: 1.5rem;
+  mask: linear-gradient(to right, transparent 20vw, black 40vw, black 60vw, transparent 80vw);
+
+  @media(max-width: 1200px) {
+    mask: linear-gradient(to right, transparent 5vw, black 20vw, black 80vw, transparent 95vw);
+  }
 
   ul {
     width: 200%;
-    mask: linear-gradient(to right, transparent 0, black 30%, black 70%, transparent 100%);
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     list-style-type: none;
-    gap: 3rem;
+    gap: 1rem;
     padding: 1rem;
     scroll-snap-type: x mandatory;
-    font-size: 3rem;
-    font-size: 2rem;
+    font-size: clamp(3vw, 4rem, 8vw);
 
     opacity: 0;
     animation: fadeIn 0.5s ease 0.5s forwards;
@@ -88,8 +93,8 @@ main {
       scroll-snap-align: center;
       text-wrap: nowrap;
 
-      &.focused {
-        scale: 1.5;
+      &:not(.focused) {
+        scale: 0.4;
       }
 
       &:hover {
@@ -152,7 +157,6 @@ main {
 .cassette {
   user-select: none;
   position: relative;
-  /* border: 1px solid sandybrown; */
 
   .circle-left {
     position: absolute;
@@ -209,8 +213,4 @@ h1.hero-title {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;
-}
-
-.controlGroup {
-  transform: translateY(-90px);
 }
