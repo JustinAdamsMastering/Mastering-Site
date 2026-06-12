@@ -21,7 +21,6 @@ main {
   height: 100%;
   flex: 1;
   display: grid;
-  row-gap: 1rem;
   padding-top: 1vh;
   padding-bottom: 2rem;
 
