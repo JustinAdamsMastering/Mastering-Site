@@ -1,4 +1,5 @@
 import Player from './songPlayer.js'
+import { songMap } from './songs.js'
 
 document.documentElement.addEventListener("click", (e) => {
   switch (e.target.dataset.action) {
@@ -36,6 +37,20 @@ const initCassette = (cassette) => {
     ({ detail: isMastered }) =>
     (cassette.dataset.active =
       `${isMastered}` === cassette.dataset.ismastered),
+  )
+  Player.observe(
+    Player.EventKeys.SongKey,
+    ({ detail }) => {
+      const songDetails = songMap.get(detail)
+      const title = songDetails?.title
+      const band = songDetails?.band
+
+      const cassette = document.querySelector('.cassette')
+      const titleEl = cassette.querySelector('.songName')
+      const bandEl = cassette.querySelector('.band')
+      titleEl.innerHTML = `"${title}"`
+      bandEl.innerHTML = `${band}`
+    }
   )
 }
 for (const cassette of cassettes) {
@@ -75,11 +90,6 @@ Player.observe(
     progressBar.classList.toggle('no-interaction', !detail.isPlaying)
   }
 )
-
-const doUnpause = () => {
-  Player.setSeek(progressBar.value)
-  Player.unpause()
-}
 
 let seekingInProgress = false
 progressBar.addEventListener('pointerdown', (e) => {

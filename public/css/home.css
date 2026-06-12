@@ -65,10 +65,9 @@ main {
     pointer-events: none;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
     align-items: center;
 
-    @media (min-width: 800px) {
+    @media (min-width: 1000px) {
       left: 20%;
       right: 20%;
     }
@@ -194,7 +193,7 @@ main {
 
 .cassette-wrapper {
   width: 89%;
-  max-width: 400px;
+  max-width: 600px;
   margin-bottom: -50px;
 }
 
@@ -229,6 +228,8 @@ main {
   }
 
   .title {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 11%;
     left: 0;
@@ -240,6 +241,14 @@ main {
     font-family: 'Shadows Into Light', Courier, monospace;
     mix-blend-mode: multiply;
     opacity: 0.7;
+
+    .songName {
+      /* color: lime; */
+    }
+
+    .band {
+      /* color: orange; */
+    }
   }
 
   &[data-playing="false"] {
