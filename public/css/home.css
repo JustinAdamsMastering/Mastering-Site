@@ -277,6 +277,7 @@ h1.hero-title {
 }
 
 .credits {
+  min-height: 32px;
   display: flex;
   flex-direction: column;
   z-index: 10;
