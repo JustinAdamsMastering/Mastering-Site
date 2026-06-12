@@ -2,10 +2,11 @@
   display: flex;
   gap: 1rem;
   width: 70%;
-  
+
   @media(min-width: 800px) {
     width: unset;
   }
+
   .progressBar {
     input {
       width: 100%;
@@ -144,18 +145,33 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
+  position: relative;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: var(--slider-color);
-  height: 6px;
+  /* background: var(--slider-color); */
+  height: 28px;
   border-radius: 2px;
   border: none;
 }
 
 input[type="range"]::-moz-range-track {
+  /* background: var(--slider-color); */
+  height: 28px;
+  border-radius: 2px;
+  border: none;
+}
+
+input[type="range"]::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  content: "";
   background: var(--slider-color);
   height: 6px;
+  width: 100%;
+  border: 10px solid blue;
   border-radius: 2px;
   border: none;
 }
@@ -168,7 +184,7 @@ input[type="range"]::-webkit-slider-thumb {
   background: var(--slider-color);
   border-radius: 2px;
   border: none;
-  margin-top: -11px;
+  margin-top: 0px;
   box-shadow: 0 0 2px 0 black;
 }
 
