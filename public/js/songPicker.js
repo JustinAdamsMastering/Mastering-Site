@@ -1,9 +1,30 @@
 //////////////
 
 import Player from './songPlayer.js'
+import { songMap } from './songs.js'
+
+// rendering setup
+
+const songSelect = document.querySelector(".song-select > ul")
+// songMap = Map<key, value>
+// <li data-song="{key}" tabindex="0">value.display</li>
+songSelect.innerHTML = ''
+songMap.forEach((value, key) => {
+  const li = document.createElement('li')
+
+  // Set attributes
+  li.setAttribute('data-song', key)
+  li.setAttribute('tabindex', '0')
+
+  // Set text content
+  li.textContent = value.display
+
+  // Append to the list
+  songSelect.appendChild(li)
+})
+
 
 // setup
-const songSelect = document.querySelector(".song-select > ul")
 const songElements = songSelect.querySelectorAll("[data-song]")
 songElements[0].scrollIntoView({ container: "nearest", block: "center", inline: 'center' })
 
@@ -41,6 +62,7 @@ const handleSongChanged = (e) => {
 
 ///////////////////
 // more setup
+
 songSelect.addEventListener('click', handleClick)
 songSelect.addEventListener('keypress', handleKey)
 

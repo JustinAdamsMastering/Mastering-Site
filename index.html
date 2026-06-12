@@ -68,15 +68,12 @@
       <div class="song-select">
         <!-- <div class="songs-list"> -->
         <ul>
-          <li data-song="filmScore" tabindex="0">Film Score</li>
-          <li data-song="popRock" tabindex="0">Pop Rock</li>
-          <li data-song="jazz" tabindex="0">Jazz</li>
         </ul>
         <!-- </div> -->
       </div>
       <div class="song-controls">
-        <button>‹</button>
-        <button>›</button>
+        <button data-action="prev">‹</button>
+        <button data-action="next">›</button>
       </div>
     </div>
     <div class="cassette intro-animation" data-ismastered="false" data-playing="false" data-active="true">
@@ -117,8 +114,10 @@
   </main>
   <script type="text/javascript" src="./public/js/howler.js"></script>
   <script type="text/javascript" src="./public/js/toggles.js"></script>
+  <script type="module" src="./public/js/songs.js"></script>
   <script type="module" src="./public/js/songPicker.js"></script>
   <script type="module" src="./public/js/songPlayer.js"></script>
+  <script type="module" src="./public/js/nextPrevBtns.js"></script>
   <script type="module" src="./public/js/index.js"></script>
 
   <!-- ion-icons -->

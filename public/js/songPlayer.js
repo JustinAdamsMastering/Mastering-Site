@@ -1,4 +1,7 @@
-import songs from "./songs.json" with { type: "json" }
+import { songMap } from './songs.js'
+
+// import songs from "./songs.json" with { type: "json" }
+const makeSongPath = (name) => `./public/audio/${name}.mp3`
 
 class AudioPlayer {
   constructor() {
@@ -39,9 +42,9 @@ class AudioPlayer {
   loadSong(dataKey) {
     this.unloadSongs()
     this.songKey = dataKey
-    const song = songs[dataKey]
-    this.beforePlayer = new Howl({ src: [song.before], preload: true })
-    this.afterPlayer = new Howl({ src: [song.after], preload: true })
+    const song = songMap.get(dataKey)
+    this.beforePlayer = new Howl({ src: [makeSongPath(song.before)], preload: true })
+    this.afterPlayer = new Howl({ src: [makeSongPath(song.after)], preload: true })
     this.emit(this.EventKeys.SongKey, dataKey)
   }
   setMastering(enableMastering) {
@@ -78,9 +81,9 @@ class AudioPlayer {
     if (!this.songKey) return
     if (this.isPlaying) return
 
-    const song = songs[this.songKey]
-    if (!this.beforePlayer) this.beforePlayer = new Howl({ src: [song.before] })
-    if (!this.afterPlayer) this.afterPlayer = new Howl({ src: [song.after] })
+    const song = songMap.get(this.songKey)
+    if (!this.beforePlayer) this.beforePlayer = new Howl({ src: [makeSongPath(song.before)] })
+    if (!this.afterPlayer) this.afterPlayer = new Howl({ src: [makeSongPath(song.after)] })
 
     const active = this.activePlayer
     const inactive = this.inactivePlayer

@@ -1,7 +1,6 @@
 import Player from './songPlayer.js'
 
 document.documentElement.addEventListener("click", (e) => {
-  // console.log(e.target.dataset)
   switch (e.target.dataset.action) {
     case "toggle-mastering":
       Player.setMastering(
