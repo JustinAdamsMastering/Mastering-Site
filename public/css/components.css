@@ -1,7 +1,11 @@
 .controlGroup {
   display: flex;
   gap: 1rem;
-
+  width: 70%;
+  
+  @media(min-width: 800px) {
+    width: unset;
+  }
   .progressBar {
     input {
       width: 100%;
@@ -16,7 +20,9 @@
     @media(max-width: 800px) {
       flex-direction: column;
     }
+
   }
+
 
   flex-direction: column;
 

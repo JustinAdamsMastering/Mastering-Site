@@ -55,6 +55,26 @@ for (const cassette of cassettes) {
   initCassette(cassette)
 }
 
+const credits = document.querySelector(".credits")
+
+Player.observe(
+  Player.EventKeys.SongKey,
+  ({ detail }) => {
+    const songDetails = songMap.get(detail)
+    const artistEl = credits.querySelector('.artist')
+    const producerEl = credits.querySelector('.producer')
+    const artist = songDetails?.artist
+    const producer = songDetails?.producer
+    if (artist && producer) {
+      artistEl.innerHTML = `Artist: <a target="_blank" rel="noopener noreferrer" href="https://instagram.com/${artist.instagram_handle}/">@${artist.instagram_handle}</a>`
+      producerEl.innerHTML = `Producer: <a target="_blank" rel="noopener noreferrer" href="https://instagram.com/${producer.instagram_handle}/">@${producer.instagram_handle}</a>`
+    } else {
+      artistEl.innerHTML = ''
+      producerEl.innerHTML = ''
+    }
+  }
+)
+
 const controls = document.querySelector(".controlGroup")
 Player.observe(
   Player.EventKeys.SongKey, () => {

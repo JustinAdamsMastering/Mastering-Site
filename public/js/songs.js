@@ -47,7 +47,13 @@ export const songMap = new Map(
                 "title": "Collide",
                 "band": "Moni Blue",
                 "after": "Moni_Blue_-_Collide_(AFTER)",
-                "before": "Moni_Blue_-_Collide_(BEFORE)"
+                "before": "Moni_Blue_-_Collide_(BEFORE)",
+                "artist": {
+                    "instagram_handle": "lamoniblue"
+                },
+                "producer": {
+                    "instagram_handle": "fizzo.music"
+                }
             }
         ],
         [
