@@ -60,6 +60,10 @@ a {
   }
 }
 
+button {
+  user-select: none;
+}
+
 .active {
   border-bottom: 1px solid white;
 }
