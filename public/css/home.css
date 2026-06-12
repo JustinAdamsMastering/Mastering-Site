@@ -99,7 +99,7 @@ main {
 .song-select {
   position: relative;
   user-select: none;
-  overflow: auto;
+  overflow: hidden;
   width: 100vw;
   margin-top: 1.5rem;
   mask: linear-gradient(to right, transparent 20vw, black 40vw, black 60vw, transparent 80vw);
@@ -193,15 +193,31 @@ main {
   }
 }
 
+.cassette-wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: -50px;
+}
+
 .cassette {
   user-select: none;
   position: relative;
+  width: 100%;
+  container-type: inline-size;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   .circle-left {
     position: absolute;
     top: 35.5%;
     left: 22.6%;
     filter: brightness(0.7);
+    width: 15%;
+    height: auto;
   }
 
   .circle-right {
@@ -209,16 +225,18 @@ main {
     top: 35.5%;
     left: 64.5%;
     filter: brightness(0.7);
+    width: 15%;
+    height: auto;
   }
 
   .title {
     position: absolute;
     top: 11%;
-    font-weight: bold;
     left: 0;
     right: 0;
     color: #003273;
-    font-size: 1rem;
+    font-weight: bold;
+    font-size: 4.5cqi;
     line-height: 1.4;
     font-family: 'Shadows Into Light', Courier, monospace;
     mix-blend-mode: multiply;
@@ -234,8 +252,6 @@ main {
   &[data-active="false"] {
     display: none;
   }
-
-  /* background-image: url("../img/before_cassette-min.webp"); */
 }
 
 .spin {
