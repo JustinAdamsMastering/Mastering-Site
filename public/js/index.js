@@ -44,8 +44,6 @@ const initCassette = (cassette) => {
       const songDetails = songMap.get(detail)
       const title = songDetails?.title
       const band = songDetails?.band
-
-      const cassette = document.querySelector('.cassette')
       const titleEl = cassette.querySelector('.songName')
       const bandEl = cassette.querySelector('.band')
       titleEl.innerHTML = `"${title}"`
