@@ -213,7 +213,7 @@ main {
   .circle-left {
     position: absolute;
     top: 35.5%;
-    left: 22.6%;
+    left: 22%;
     filter: brightness(0.7);
     width: 15%;
     height: auto;
@@ -222,7 +222,7 @@ main {
   .circle-right {
     position: absolute;
     top: 35.5%;
-    left: 64.5%;
+    left: 64%;
     filter: brightness(0.7);
     width: 15%;
     height: auto;
