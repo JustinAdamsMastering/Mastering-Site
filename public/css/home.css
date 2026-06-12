@@ -196,7 +196,8 @@ main {
   width: 89%;
   max-width: 500px;
   margin-bottom: -80px;
-  @media (min-width: 800px){
+
+  @media (min-width: 800px) {
     margin-bottom: -80px;
   }
 }
