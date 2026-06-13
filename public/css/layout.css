@@ -21,6 +21,15 @@ header {
   padding: 0;
   overflow: hidden;
 
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-wrap: nowrap;
+    flex-wrap: wrap;
+  }
+
   >div {
 
     &.mobile-nav {
@@ -147,10 +156,12 @@ nav {
   font-weight: 300;
   text-align: center;
   padding-inline: 1rem;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  user-select: none;
 }
 
 main {
   /* place-items: center; */
   text-align: center;
-  /* min-height: 100%; */ 
+  /* min-height: 100%; */
 }

@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="./index.css">
-  <link rel="stylesheet" href="./public/css/layout.css">
-  <link rel="stylesheet" href="./public/css/components.css">
-  <link rel="stylesheet" href="./public/css/pricing.css">
+  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/public/css/layout.css">
+  <link rel="stylesheet" href="/public/css/components.css">
+  <link rel="stylesheet" href="/public/css/pricing.css">
 
   <title>Justin Adams Mastering | Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,19 +24,21 @@
   <header>
     <div class="mobile-nav">
       <details>
-        <summary aria-label="menu-button">☰</summary>
-        <h2 class="logo">Justin Adams Mastering</h2>
+        <summary aria-label="menu-button">
+          <h2 class="logo">Justin Adams Mastering</h2>
+          <span>☰</span>
+        </summary>
         <nav>
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
             <div class="spacer"></div>
             <li><a href="#" class="active">Pricing</a></li>
             <div class="spacer"></div>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/contact/">Contact</a></li>
             <div class="spacer"></div>
-            <li><a href="about.html">About</a></li>
+            <li><a href="/about/">About</a></li>
             <div class="spacer"></div>
-            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="/faq/">FAQ</a></li>
           </ul>
         </nav>
       </details>
@@ -44,15 +46,15 @@
     <div class="desktop-nav">
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <div class="spacer"></div>
           <li><a href="#" class="active">Pricing</a></li>
           <div class="spacer"></div>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/contact/">Contact</a></li>
           <div class="spacer"></div>
-          <li><a href="about.html">About</a></li>
+          <li><a href="/about/">About</a></li>
           <div class="spacer"></div>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="/faq/">FAQ</a></li>
         </ul>
       </nav>
       <h2 class="logo">Justin Adams Mastering</h2>
@@ -60,48 +62,24 @@
   </header>
 
   <main class="pricing-page">
-
     <div class="pricing-container">
-
-      <p class="pricing-main">
-        Songs are mastered at a flat rate of <span class="underline">$100 per song</span>.
-      </p>
-
-      <p class="pricing-sub">
-        Included with each song: 24-bit WAV master, CD-quality version, and a reference MP3.
-      </p>
-
-      <p class="pricing-sub">
-        Each song includes 3 free revisions. $35 per revision after that.
-      </p>
-
+      <p class="pricing-main">Songs are mastered at a flat rate of <span class="underline">$100 per song</span>.</p>
+      <p class="pricing-sub">Included with each song: 24-bit WAV master, CD-quality version, and a reference MP3.</p>
+      <p class="pricing-sub">Each song includes 3 free revisions. $35 per revision after that.</p>
       <hr class="pricing-divider" />
-
       <h2 class="pricing-heading">Add ons:</h2>
-
       <div class="addons">
-
-        <p class="addon">
-          Pre-vinyl Master: $65 per side
-        </p>
-
-        <p class="addon">
-          DDP Image: $35 per project
-        </p>
-
+        <p class="addon">Pre-vinyl Master: $65 per side</p>
+        <p class="addon">DDP Image: $35 per project</p>
         <p class="addon">
           Each Alternate Mix: $25
           <span class="addon-note">
             <br>∟ (instrumentals, clean edits, a cappella versions, etc.)
           </span>
         </p>
-
       </div>
-
     </div>
-
   </main>
-
 </body>
 
 </html>

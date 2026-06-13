@@ -6,10 +6,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./index.css">
-  <link rel="stylesheet" href="./public/css/layout.css">
-  <link rel="stylesheet" href="./public/css/components.css">
-  <link rel="stylesheet" href="./public/css/home.css">
+  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/public/css/layout.css">
+  <link rel="stylesheet" href="/public/css/components.css">
+  <link rel="stylesheet" href="/public/css/home.css">
 
   <title>Justin Adams Mastering | Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,19 +26,21 @@
   <header>
     <div class="mobile-nav">
       <details>
-        <summary aria-label="menu-button">☰</summary>
-        <h2 class="logo">Justin Adams Mastering</h2>
+        <summary aria-label="menu-button">
+          <h2 class="logo">Justin Adams Mastering</h2>
+          <span>☰</span>
+        </summary>
         <nav>
           <ul>
             <li><a href="#" class="active">Home</a></li>
             <div class="spacer"></div>
-            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
             <div class="spacer"></div>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/contact/">Contact</a></li>
             <div class="spacer"></div>
-            <li><a href="about.html">About</a></li>
+            <li><a href="/about/">About</a></li>
             <div class="spacer"></div>
-            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="/faq/">FAQ</a></li>
           </ul>
         </nav>
       </details>
@@ -48,28 +50,23 @@
         <ul>
           <li><a href="#" class="active">Home</a></li>
           <div class="spacer"></div>
-          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
           <div class="spacer"></div>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/contact/">Contact</a></li>
           <div class="spacer"></div>
-          <li><a href="about.html">About</a></li>
+          <li><a href="/about/">About</a></li>
           <div class="spacer"></div>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="/faq/">FAQ</a></li>
         </ul>
       </nav>
       <h2 class="logo">Justin Adams Mastering</h2>
     </div>
   </header>
   <main>
-    <!-- <h1>Contact for Enquiries</h1> -->
-
-    <h1 class="hero-title">Hear the difference</h1>
     <div class="songs-list">
       <div class="song-select">
-        <!-- <div class="songs-list"> -->
         <ul>
         </ul>
-        <!-- </div> -->
       </div>
       <div class="song-controls">
         <button data-action="prev">‹</button>
@@ -78,18 +75,18 @@
     </div>
     <div class="cassette-wrapper">
       <div class="cassette intro-animation" data-ismastered="false" data-playing="false" data-active="true">
-        <img src="./public/img/before_cassette-min.webp" width="400px" height="254px" />
-        <img class="circle-left spin" src="./public/img/cassette_circle.webp" width="52px" />
-        <img class="circle-right spin" src="./public/img/cassette_circle.webp" width="52px" />
+        <img src="/public/img/before_cassette-min.webp" width="400px" height="254px" />
+        <img class="circle-left spin" src="/public/img/cassette_circle.webp" width="52px" />
+        <img class="circle-right spin" src="/public/img/cassette_circle.webp" width="52px" />
         <div class="title">
           <span class="band"></span>
           <span class="songName"></span>
         </div>
       </div>
       <div class="cassette" data-ismastered="true" data-playing="false" data-active="false">
-        <img src="./public/img/after_cassette-min.webp" width="400px" height="254px" />
-        <img class="circle-left spin" src="./public/img/cassette_circle.webp" width="52px" />
-        <img class="circle-right spin" src="./public/img/cassette_circle.webp" width="52px" />
+        <img src="/public/img/after_cassette-min.webp" width="400px" height="254px" />
+        <img class="circle-left spin" src="/public/img/cassette_circle.webp" width="52px" />
+        <img class="circle-right spin" src="/public/img/cassette_circle.webp" width="52px" />
         <div class="title">
           <span class="band"></span>
           <span class="songName"></span>
@@ -126,13 +123,13 @@
     <small>Disclaimer: These songs are not official releases and are used with permission by their respective
       artists.</small>
   </main>
-  <script type="text/javascript" src="./public/js/howler.js"></script>
-  <script type="text/javascript" src="./public/js/toggles.js"></script>
-  <script type="module" src="./public/js/songs.js"></script>
-  <script type="module" src="./public/js/songPicker.js"></script>
-  <script type="module" src="./public/js/songPlayer.js"></script>
-  <script type="module" src="./public/js/nextPrevBtns.js"></script>
-  <script type="module" src="./public/js/index.js"></script>
+  <script type="text/javascript" src="/public/js/howler.js"></script>
+  <script type="text/javascript" src="/public/js/toggles.js"></script>
+  <script type="module" src="/public/js/songs.js"></script>
+  <script type="module" src="/public/js/songPicker.js"></script>
+  <script type="module" src="/public/js/songPlayer.js"></script>
+  <script type="module" src="/public/js/nextPrevBtns.js"></script>
+  <script type="module" src="/public/js/index.js"></script>
 
   <!-- ion-icons -->
   <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> -->
