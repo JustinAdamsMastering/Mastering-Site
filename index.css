@@ -64,7 +64,7 @@ button {
   user-select: none;
 }
 
-.active {
+a[href="#"] {
   border-bottom: 1px solid white;
 }
 
