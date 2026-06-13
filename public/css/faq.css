@@ -1,3 +1,7 @@
+body {
+    background-image: url("../img/faq-min-blurred.webp");
+}
+
 main {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,10 @@
 body {
   min-height: 100svh;
   background-color: var(--color-bg);
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 header {
