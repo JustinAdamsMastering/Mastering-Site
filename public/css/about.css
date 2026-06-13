@@ -8,24 +8,42 @@ body {
 }
 
 main {
-    display: flex;
+    display: grid;
+    grid-template-areas:
+        "image"
+        "about";
+    grid-template-columns: 1fr;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem;
-    gap: 1rem;
+    column-gap: 4rem;
+    row-gap: 1rem;
+
+    @media (min-width: 780px) {
+        grid-template-areas: "image about";
+        grid-template-columns: 1fr 2fr;
+    }
 }
 
 main>div {
+    /* padding-top: 2rem; */
     display: flex;
     flex-direction: column;
     gap: 1rem;
     text-align: justify;
     flex-wrap: wrap;
+    grid-area: about;
 }
 
 img {
     object-fit: contain;
     object-position: center;
     border-radius: 2px;
+    grid-area: image;
+    max-width: 80vw;
+}
+
+h2 {
+    text-align: center;
 }
