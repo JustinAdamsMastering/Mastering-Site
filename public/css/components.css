@@ -171,7 +171,6 @@ input[type="range"]::after {
   background: var(--slider-color);
   height: 6px;
   width: 100%;
-  border: 10px solid blue;
   border-radius: 2px;
   border: none;
   pointer-events: none;
