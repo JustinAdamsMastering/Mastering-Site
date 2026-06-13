@@ -1,0 +1,16 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+ol {
+    display: flex;
+    list-style-type: none;
+    gap: 1rem;
+    flex-direction: column;
+}
