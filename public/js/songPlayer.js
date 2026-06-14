@@ -50,14 +50,18 @@ class AudioPlayer {
   setMastering(enableMastering) {
     if (this.enableMastering === enableMastering) return
 
-    // Capture players before the swap happens via the setter assignment below
+    const wasPlaying = this.isPlaying
     const active = this.activePlayer
     const inactive = this.inactivePlayer
 
-    if (this.isPlaying) {
-      active.pause()
-      inactive.seek(active.seek())
+    if (wasPlaying) {
+      const currentSeek = active.seek()
+      inactive.seek(currentSeek)
+      inactive.volume(0)
       inactive.play()
+      inactive.fade(0, 1, this.fadeTime)
+      active.fade(1, 0, this.fadeTime)
+      active.once("fade", () => active.pause())
     }
 
     this.enableMastering = enableMastering
