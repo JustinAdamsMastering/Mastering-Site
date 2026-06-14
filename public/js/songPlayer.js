@@ -155,7 +155,7 @@ class AudioPlayer {
     this.beforePlayer?.off("fade")
     this.afterPlayer?.off("fade")
     this.beforePlayer?.volume(1)  // reset to defaults for next play
-    this.afterPlayer?.volume(0)
+    this.afterPlayer?.volume(1)
     this.beforePlayer?.pause()
     this.afterPlayer?.pause()
     this.beforePlayer?.seek(0)

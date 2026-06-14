@@ -139,13 +139,13 @@
   --slider-color: rgb(118, 118, 118);
   touch-action: none;
   z-index: 10;
+  position: relative;
 }
 
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
-  position: relative;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
@@ -162,7 +162,7 @@ input[type="range"]::-moz-range-track {
   border: none;
 }
 
-input[type="range"]::after {
+.sliderVisual {
   display: block;
   position: absolute;
   top: 50%;
@@ -211,6 +211,7 @@ details {
   padding: 2rem;
   gap: 0rem;
   transition: all 0.2s;
+
   &:first-of-type {
     border-top-width: 2px;
   }
