@@ -55,6 +55,10 @@ class AudioPlayer {
     const inactive = this.inactivePlayer
 
     if (wasPlaying) {
+      active.off("fade")
+      inactive.off("fade")
+      inactive.pause() // ensure it's stopped before we seek/play
+
       const currentSeek = active.seek()
       inactive.seek(currentSeek)
       inactive.volume(0)
@@ -69,6 +73,10 @@ class AudioPlayer {
   }
   pause() {
     this.seek = this.activePlayer?.seek()
+    this.activePlayer?.off("fade")
+    this.inactivePlayer?.off("fade")
+    this.activePlayer?.volume(1)
+    this.inactivePlayer?.volume(0)
     this.activePlayer?.pause()
     this.stopUpdatingProgress()
     this.emit(this.EventKeys.Playing, PlayStates.paused)
@@ -141,7 +149,13 @@ class AudioPlayer {
     window.addEventListener(key, callback)
     return () => window.removeEventListener(key, callback)
   }
+
+
   stop() {
+    this.beforePlayer?.off("fade")
+    this.afterPlayer?.off("fade")
+    this.beforePlayer?.volume(1)  // reset to defaults for next play
+    this.afterPlayer?.volume(0)
     this.beforePlayer?.pause()
     this.afterPlayer?.pause()
     this.beforePlayer?.seek(0)
