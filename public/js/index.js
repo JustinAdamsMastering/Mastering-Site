@@ -110,17 +110,21 @@ Player.observe(
 )
 
 let seekingInProgress = false
-progressBar.addEventListener('change', () => {
+progressBar.addEventListener('pointerdown', (e) => {
   seekingInProgress = true
  
   Player.pause()
 })
 
-progressBar.addEventListener('pointerup', (e) => {
+const finishSeek = () => {
   if (!seekingInProgress) return
   seekingInProgress = false
   Player.setSeek(progressBar.value)
   Player.unpause()
+}
+
+progressBar.addEventListener('pointerup', finishSeek)
+progressBar.addEventListener('change', finishSeek)
 })
 
 window.addEventListener('keypress', (e) => {
