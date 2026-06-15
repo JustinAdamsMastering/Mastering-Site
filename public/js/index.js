@@ -100,6 +100,7 @@ const progressBar = controls.querySelector("#progressBar")
 progressBar.classList.add('no-interaction')
 Player.observe(
   Player.EventKeys.Progress, (e) => {
+    if (seekingInProgress) return
     progressBar.value = e.detail.toString()
   }
 )
