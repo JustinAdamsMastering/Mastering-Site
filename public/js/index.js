@@ -126,7 +126,7 @@ const finishSeek = () => {
 
 progressBar.addEventListener('pointerup', finishSeek)
 progressBar.addEventListener('change', finishSeek)
-
+progressBar.addEventListener('click', finishSeek)
 
 window.addEventListener('keypress', (e) => {
   if (e.key === ' ') {
