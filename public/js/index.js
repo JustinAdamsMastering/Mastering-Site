@@ -98,6 +98,9 @@ Player.observe(
 
 const progressBar = controls.querySelector("#progressBar")
 progressBar.classList.add('no-interaction')
+let seekingInProgress = false
+let isDragging = false
+
 Player.observe(
   Player.EventKeys.Progress, (e) => {
     if (seekingInProgress) return
@@ -110,34 +113,32 @@ Player.observe(
   }
 )
 
-let seekingInProgress = false
-progressBar.addEventListener('pointerdown', (e) => {
-  seekingInProgress = true
- 
-  Player.pause()
-})
-progressBar.addEventListener('pointerdown', (e) => {
+const getPercentFromEvent = (e) => {
   const rect = progressBar.getBoundingClientRect()
   const percent = (e.clientX - rect.left) / rect.width
-  const clamped = Math.min(1, Math.max(0, percent))
-  progressBar.value = clamped.toString()
+  return Math.min(1, Math.max(0, percent))
+}
+
+progressBar.addEventListener('pointerdown', (e) => {
+  seekingInProgress = true
+  isDragging = true
+  Player.pause()
+  progressBar.value = getPercentFromEvent(e).toString()
 })
+
+progressBar.addEventListener('pointermove', (e) => {
+  if (!isDragging) return
+  progressBar.value = getPercentFromEvent(e).toString()
+})
+
 const finishSeek = () => {
   if (!seekingInProgress) return
   seekingInProgress = false
+  isDragging = false
   Player.setSeek(progressBar.value)
   Player.unpause()
 }
 
 progressBar.addEventListener('pointerup', finishSeek)
-progressBar.addEventListener('change', finishSeek)
+progressBar.addEventListener('pointercancel', finishSeek)
 
-
-window.addEventListener('keypress', (e) => {
-  if (e.key === ' ') {
-    if (!e.target.dataset?.action) {
-      // Let buttons handle their own keypress
-      Player.stop()
-    }
-  }
-})
