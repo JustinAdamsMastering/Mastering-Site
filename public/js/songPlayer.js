@@ -105,7 +105,7 @@ class AudioPlayer {
       active.seek(this.seek)
       active.play()
       this.emit(this.EventKeys.Playing, PlayStates.playing)
-      this.startUpdatingProgress()
+      setTimeout(() => this.startUpdatingProgress(), 100)
     }
 
     if (active.state() === "loaded") {
