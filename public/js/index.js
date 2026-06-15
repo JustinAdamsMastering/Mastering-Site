@@ -116,7 +116,12 @@ progressBar.addEventListener('pointerdown', (e) => {
  
   Player.pause()
 })
-
+progressBar.addEventListener('pointerdown', (e) => {
+  const rect = progressBar.getBoundingClientRect()
+  const percent = (e.clientX - rect.left) / rect.width
+  const clamped = Math.min(1, Math.max(0, percent))
+  progressBar.value = clamped.toString()
+})
 const finishSeek = () => {
   if (!seekingInProgress) return
   seekingInProgress = false
@@ -126,7 +131,7 @@ const finishSeek = () => {
 
 progressBar.addEventListener('pointerup', finishSeek)
 progressBar.addEventListener('change', finishSeek)
-progressBar.addEventListener('click', finishSeek)
+
 
 window.addEventListener('keypress', (e) => {
   if (e.key === ' ') {
