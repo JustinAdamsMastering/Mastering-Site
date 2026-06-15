@@ -110,7 +110,7 @@ Player.observe(
 )
 
 let seekingInProgress = false
-progressBar.addEventListener('pointerdown', (e) => {
+progressBar.addEventListener('change', () => {
   seekingInProgress = true
  
   Player.pause()
