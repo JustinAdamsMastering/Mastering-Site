@@ -84,7 +84,7 @@ class AudioPlayer {
   unpause() {
     if (this.activePlayer && this.activePlayer.state() === "loaded" && !this.activePlayer.playing()) {
       this.activePlayer.seek(this.seek)
-      this.activePlayer.play()
+      setTimeout(() => this.activePlayer.play(), 0)
       this.emit(this.EventKeys.Playing, PlayStates.playing)
       this.startUpdatingProgress()
     }
