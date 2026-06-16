@@ -97,6 +97,9 @@ Player.observe(
 )
 
 const progressBar = controls.querySelector("#progressBar")
+document.documentElement.addEventListener('click', () => {
+  Player.unlockiOS()
+}, { once: true })
 progressBar.classList.add('no-interaction')
 let seekingInProgress = false
 let isDragging = false
