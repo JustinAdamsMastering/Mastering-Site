@@ -43,8 +43,8 @@ class AudioPlayer {
     this.unloadSongs()
     this.songKey = dataKey
     const song = songMap.get(dataKey)
-    this.beforePlayer = new Howl({ src: [makeSongPath(song.before)], preload: true, html5: true })
-    this.afterPlayer = new Howl({ src: [makeSongPath(song.after)], preload: true, html5: true })
+    this.beforePlayer = new Howl({ src: [makeSongPath(song.before)], preload: true })
+    this.afterPlayer = new Howl({ src: [makeSongPath(song.after)], preload: true })
     this.emit(this.EventKeys.SongKey, dataKey)
   }
   setMastering(enableMastering) {
@@ -94,8 +94,8 @@ class AudioPlayer {
     if (this.isPlaying) return
 
     const song = songMap.get(this.songKey)
-    if (!this.beforePlayer) this.beforePlayer = new Howl({ src: [makeSongPath(song.before)], html5: true })
-    if (!this.afterPlayer) this.afterPlayer = new Howl({ src: [makeSongPath(song.after)], html5: true })
+    if (!this.beforePlayer) this.beforePlayer = new Howl({ src: [makeSongPath(song.before)] })
+    if (!this.afterPlayer) this.afterPlayer = new Howl({ src: [makeSongPath(song.after)] })
 
     const active = this.activePlayer
     const inactive = this.inactivePlayer
