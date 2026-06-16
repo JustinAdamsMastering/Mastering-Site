@@ -4,7 +4,18 @@ import { songMap } from './songs.js'
 const makeSongPath = (name) => `./public/audio/${name}.mp3`
 
 class AudioPlayer {
-  constructor() {
+  unlockiOS() {
+  const isIOS = /iP(hone|od|ad)/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+  if (!isIOS) return
+  const audio = document.createElement('audio')
+  audio.setAttribute('x-webkit-airplay', 'deny')
+  audio.preload = 'auto'
+  audio.loop = true
+  audio.src = '/public/audio/silence.mp3'
+  audio.play()
+}
+   constructor() {
     this.songKey = null
     this.enableMastering = false
     this.beforePlayer = null
