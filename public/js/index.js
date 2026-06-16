@@ -97,7 +97,7 @@ Player.observe(
 )
 
 const progressBar = controls.querySelector("#progressBar")
-document.documentElement.addEventListener('click', () => {
+document.documentElement.addEventListener('pointerdown', () => {
   Player.unlockiOS()
 }, { once: true })
 progressBar.classList.add('no-interaction')
